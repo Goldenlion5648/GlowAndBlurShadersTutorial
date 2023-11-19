@@ -1,0 +1,31 @@
+[gd_scene load_steps=6 format=3 uid="uid://lv75gcar03pk"]
+
+[ext_resource type="Shader" path="res://glowing.gdshader" id="1_v4n1v"]
+[ext_resource type="Texture2D" uid="uid://bfojf3t2xgcs5" path="res://vanillaIceCream.png" id="2_r7as0"]
+[ext_resource type="Shader" path="res://blur.gdshader" id="3_iw7qi"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0qavq"]
+shader = ExtResource("1_v4n1v")
+shader_parameter/border_threshold = Vector2(0.01, 0.01)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vywwp"]
+shader = ExtResource("3_iw7qi")
+shader_parameter/blur_amount = Vector2(0.01, 0.01)
+shader_parameter/focus_point = Vector2(0.37, 0.2)
+shader_parameter/focus_radius = 0.1
+
+[node name="main" type="Node2D"]
+
+[node name="glow" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_0qavq")
+position = Vector2(668, 521)
+texture = ExtResource("2_r7as0")
+
+[node name="blur" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_vywwp")
+position = Vector2(1444, 542)
+texture = ExtResource("2_r7as0")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(1141, 627)
+zoom = Vector2(0.49, 0.49)
